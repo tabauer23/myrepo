@@ -39,11 +39,11 @@ You can also hide local keyrings, for example:
 # Set variables to be used in keyring.
 
 #Sets the name of the keyring itself
-kr_name <- "my_keyring"
+kr_name <- "example_keyring"
 #sets the name of the service used for the keyring below
-kr_service <- "my_database"
+kr_service <- "database1"
 #sets the name of the user used for the keyring below
-kr_username <- "my_username"
+kr_username <- "trevorb"
 
 
 ```
@@ -66,7 +66,7 @@ kb <- keyring::backend_file$new()
 # Prompt for the keyring password, used to unlock keyring
 kb$keyring_create(kr_name)
 # Prompt for the credential to be stored in the keyring
-kb$set("uatwisdom", username="wisdom", keyring=kr_name)
+kb$set(service="databaseexp", username="trevorb", keyring=kr_name)
 # Lock the keyring
 kb$keyring_lock(kr_name)
 
@@ -81,8 +81,8 @@ It is possible to retrieve passwords from hidden keys assuming you know the user
 ```{r pressure, include=TRUE, eval=FALSE}
 
 # retrieve username and password, though usually you would never want to do this, but it is possible to get the username and password.
-keyring::backend_file$new()$get(service = "uatwisdom",
-                                user = "wisdom",
+keyring::backend_file$new()$get(service = "databaseexp",
+                                user = "trevorb",
                                 keyring = kr_name)
 
 ```
